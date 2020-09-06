@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-if="num === 0">0</h1><!--если num строго равен 0 выводим 0-->
+    <h2 v-else-if="num === 1">1</h2><!--если num строго равен 1 выводим 1-->
+    <h3 v-else>3</h3><!--в ином случае выводим 3-->
+    <button @click="changeNum">change</button>
+    
+    <div v-show>asfagsgg</div><!--задает display none элементу-->
+
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 0
+      },
+      methods: {
+        changeNum() {
+          this.num = this.num + 1;//по клику увеличиваем значение num на 1
+        }
+      }
+    })
+  </script>
+</body>
+</html>

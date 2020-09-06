@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Events</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-on="{
+      input: changeTitle,
+      focus: changeTitle
+    }">
+    <h1 ref="h1">{{ title }}</h1>
+    <button @click="changeColor">wwwww</button><!--вешаем обработчик события-->
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        title: "123456789"
+      },
+      methods: {
+        changeTitle(event) {
+          this.title = event.target.value;//свойству title объекта data присваеваем значение input
+        },
+        changeColor() {
+          let el = this.$refs.h1;
+          el.style.color = 'red';
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <hello 
+    :key="name"
+    v-for="name in names"
+    :name="name"><!--задаем значение по ключу, перебираем массив, динамически выводим свойство которое хотим передать-->
+    </hello><!--вставляем шаблон внутрь нашего Vue эл та-->
+  </div>
+
+  <!--шаблон компонента-->
+  <script type="text/x-template" id="hello">
+    <div>
+      <h1>Hello {{name}}</h1><!--выводим данные на страницу-->
+      <test></test><!--шаблон можно вставлять внутрь другого шаблона-->
+    </div>
+  </script>
+  <script>
+
+    Vue.component('hello', {
+      props: ['name'],//регистрируем свойство внутри компонента
+      template: '#hello',
+      components: {//локальные компоненты
+        test: {
+          template: '<h3>safsdffas</h3>'
+        }
+      }
+    })
+
+    const vueModel = new Vue({
+      data() {
+        return {
+          names: ['dima', 'kolya', 'sasha']
+        }
+      },
+    });
+    vueModel.$mount('#app');
+  </script>
+</body>
+</html>

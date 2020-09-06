@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Hello world</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+  </div>
+  <script>
+    new Vue({//новый экземпляр объекта Vue
+      el: '#app',//элемент внутрь которого будут выводиться данные
+      data: {//объект с данными
+        title: 'Hello World'
+      }
+    })
+  </script>
+</body>
+</html>

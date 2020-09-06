@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <hello></hello>
+  </div>
+  <script>
+    Vue.component('hello', {
+      template: '<h1>{{title}}</h1>',
+      data() {
+        return {
+          title: 'hello world'
+        }
+      }
+    })
+
+    const vueModel = new Vue();
+    vueModel.$mount('#app');//содержимое эл-та полностью заменяется на результат выполнения рендер функции
+  </script>
+</body>
+</html>

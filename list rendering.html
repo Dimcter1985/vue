@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="i in arr">{{i}}</li><!--выводим элементы массива списком-->
+    </ul>
+    <ul>
+      <li v-for="v in obj">{{v}}</li><!--выводим свойства объекта списком-->
+    </ul>
+    <ul>
+      <li v-for="person in arrObj"
+          @click=""
+          v-if="person.salary < 200000"
+      ><!--выводим свойства объекта списком, можем вешать обработчики событий на кажд элемент, ф так же задавать условия-->
+        {{person.salary}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        arr: ['one', 'two', 'three'],
+
+        obj: {
+          prop: 'val1',
+          prop2: 'val2'
+        },
+
+        arrObj: [
+          {name: 'Dmitry', salary: 200000},
+          {name: 'Artyom', salary: 100000},
+          {name: 'Maxim', salary: 50000}
+        ]
+      }
+    })
+  </script>
+</body>
+</html>

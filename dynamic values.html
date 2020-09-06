@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>dynamic value</title>
+</head>
+<body>
+  <div id="app">
+    <a :href="link">google</a><!--присваеваем значение атрибутам-->
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        link: "https://www.google.ru/"
+      }
+    })
+  </script>
+</body>
+</html>

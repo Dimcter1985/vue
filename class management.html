@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1 class="static" :class="{active:changed}">{{title}}</h1><!--присваеваем значение changed классу active динамически-->
+    <button @click="changeClass">push</button>
+  </div>
+  <style>
+    .static {
+      color: blue;
+    }
+    .active {
+      color: red;
+    }
+  </style>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        title: 'hello world',
+        activeClass: 'active',//активный класс
+        changed: false//флаг
+      },
+      methods: {
+        changeClass() {
+          this.changed = !this.changed;//меняем значение флага на противоположное по клику
+        }
+      }
+    })
+  </script>
+</body>
+</html>

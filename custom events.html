@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <parent></parent>
+  </div>
+
+  <script type="text/x-template" id="parent">
+    <div>
+      <h1>{{title}}</h1>
+      <child @clickEmited="changeTitle"></child><!--пользовательское событие полученное при клике из дочернего компонента вызывает метод changeTitle-->
+    </div>
+  </script>
+
+  <script type="text/x-template" id="child">
+    <button @click="handleClick">dsfsdf</button>
+  </script>
+
+  <script>
+
+    Vue.component('child', {
+      template: '#child',
+      methods: {
+        handleClick() {
+          this.$emit('clickEmited', 'new title')//функция с помощью эмит передаее данные (название пользовательского события и новый заголовок) из компонента наружу (родителю)
+        }
+      }
+    })
+
+    Vue.component('parent', {
+      template: '#parent',
+      data() {
+        return {
+          title: 'hello world'
+        }
+      },
+      methods: {
+        changeTitle(newTitle) {//принимает в качестве аргумента из дочернего компонента новый заголовок и присваевает его в кач ве значения свойству title
+          this.title = newTitle;
+        }
+      }
+    })
+
+    const newValue = new Vue();
+    newValue.$mount('#app');
+  </script>
+</body>
+</html>

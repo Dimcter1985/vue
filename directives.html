@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Directives</title>
+</head>
+<body>
+  <div id="app">
+    <h1 v-text="title"></h1><!--создаем новый текстовый узел-->
+    <div v-html="link"></div><!--создаем новый элемент-->
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        title: 'Hello world',
+        link: '<a href="https://habr.com/ru/">link</a>'
+      }
+    })
+  </script>
+</body>
+</html>

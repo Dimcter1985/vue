@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <button @click="changeTitle">2222</button>
+    <h2>{{subtitle}}</h2>
+    <button @click="changeValue">insert</button>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        title: '2222222',
+        subtitle: '11111'
+      },
+      computed: {//вычисляемые свойства
+        newTitle() {
+          return 'title'
+        },
+        newValue: {
+          get() {
+            return 'new title'//получить значение
+          },
+          set(value) {
+            console.log('computed prop seted for', value);
+            this.subtitle = 'set value';//задать значение
+          }
+        }
+      },
+      methods: {
+        changeTitle() {
+          this.title = this.newTitle//внутрь свойства подставляем значение вычисляемого свойства
+        },
+        changeValue() {
+          this.newValue = 'wrwerwer';
+          this.subtitle = this.newValue;
+        }
+      }
+    })
+  </script>
+</body>
+</html>

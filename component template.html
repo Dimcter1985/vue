@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <hello></hello><!--вставляем шаблон внутрь нашего Vue эл та-->
+  </div>
+
+  <!--шаблон компонента-->
+  <script type="text/x-template" id="hello">
+    <div>
+      <h1>{{title}}</h1>
+      <test></test><!--шаблон можно вставлять внутрь другого шаблона-->
+    </div>
+  </script>
+  <script>
+    Vue.component('test', {
+      template: '<h2>asdffafsf</h2>'
+    })
+
+    Vue.component('hello', {
+      template: '#hello',
+      data() {
+        return {
+          title: 'hello world'
+        }
+      }
+
+    })
+
+    const vueModel = new Vue();
+    vueModel.$mount('#app');
+  </script>
+
+</body>
+</html>

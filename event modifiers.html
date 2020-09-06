@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div class="outer" @click.capture="outerClick">outer1<!--событие сработает только на погружении-->
+      <div class="inner" @click.stop="innerClick">inner1</div><!--отмена всплытия-->
+      <div class="inner" @click.self="innerClick">inner2</div><!--сработает только на элементе на котором произошло событие-->
+    </div>
+    <div class="inner" @click.once="innerClick">outer2</div><!--событие произойдет только один раз-->
+    <div class="inner" @click.passive="innerClick">outer3</div><!--запускает пассив мод для тач событий-->
+    <a href="" @click.prevent>ссылка</a><!--отменяет действие по умолчанию-->
+  </div>
+  <!--существуют также модификаторы для мыши и кнопок клавиатуры-->
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+        outerClick(e) {
+          console.log('outer');
+        },
+        innerClick(e) {
+          console.log('inner');
+        }
+      }
+    })
+  </script>
+</body>
+</html>
